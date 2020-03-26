@@ -1,0 +1,53 @@
+<app-table-actions-bar [columnData]="columnData"
+                       (addTableRow)="emitAddRow($event)"
+                       (addTableColumn)="emitAddColumn($event)">
+</app-table-actions-bar>
+
+<table class="table">
+  <thead class="table-header">
+  <tr>
+    <th class="border-bottom-0" *ngFor="let item of columnData; let i = index; trackBy: trackByFn">
+      <div class="d-flex justify-content-between align-items-center">
+        <span>{{item?.title}}</span>
+        <button type="button" class="btn btn-danger"
+                (click)="emitRemoveColumn(i)">Remove
+        </button>
+      </div>
+    </th>
+  </tr>
+  </thead>
+  <tbody class="table-body">
+  <tr *ngFor="let item  of rowData; let i = index; trackBy: trackByFn">
+    <td *ngFor="let column of columnData">{{ item[column?.title] }}</td>
+    <td class="border-0" *ngIf="columnData.length">
+      <button type="button" class="btn btn-danger"
+              (click)="emitRemoveRow(i)">Remove
+      </button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td *ngFor="let column of columnData">
+      <span *ngIf="isShowAdditionalInfo">{{ sumAdditionalInfo[column.title] }}</span>
+    </td>
+    <td class="border-0">
+      <button *ngIf="!isShowAdditionalInfo"
+              type="button" class="btn btn-info additional-btn"
+              (click)="showHideAdditionalInfo()">
+        Show additionalInfo
+      </button>
+      <button *ngIf="isShowAdditionalInfo"
+              type="button" class="btn btn-info additional-btn"
+              (click)="showHideAdditionalInfo()">
+        Hide additionalInfo
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td *ngFor="let column of columnData">
+      <span *ngIf="isShowAdditionalInfo">{{ multiplicationAdditionalInfo[column.title] }}</span>
+    </td>
+  </tr>
+  </tfoot>
+</table>
