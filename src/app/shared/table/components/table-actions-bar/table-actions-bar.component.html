@@ -15,7 +15,7 @@
           <div *ngFor="let item of columnData" class="col-3">
             <input
               [placeholder]="item?.title"
-              [formControlName]="item.title"
+              [formControlName]="item?.title"
               class="form-control mt-3 mb-3"
               type="number">
           </div>

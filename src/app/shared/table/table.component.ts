@@ -55,7 +55,15 @@ export class TableComponent implements OnInit, OnChanges {
     this.addTableRow.emit(data);
   }
 
-  public getSumForEachRowInColumn(): void {
+  public showHideAdditionalInfo(): void {
+    this.isShowAdditionalInfo = !this.isShowAdditionalInfo;
+  }
+
+  public trackByFn(index: number): number {
+    return index;
+  }
+
+  private getSumForEachRowInColumn(): void {
     this.sumAdditionalInfo = this.columnData.reduce((obj, column) => {
       const { title } = column;
       obj[title] = this.getSumByColumn(title);
@@ -63,20 +71,12 @@ export class TableComponent implements OnInit, OnChanges {
     }, {});
   }
 
-  public getMultiplyForEachRowInColumn(): void {
+  private getMultiplyForEachRowInColumn(): void {
     this.multiplicationAdditionalInfo = this.columnData.reduce((obj, column) => {
       const { title } = column;
       obj[title] = this.getMultiplyByColumn(title);
       return obj;
     }, {});
-  }
-
-  public showHideAdditionalInfo(): void {
-    this.isShowAdditionalInfo = !this.isShowAdditionalInfo;
-  }
-
-  public trackByFn(index: number): number {
-    return index;
   }
 
   private getSumByColumn(column: string): number {

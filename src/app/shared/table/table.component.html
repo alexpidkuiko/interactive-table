@@ -29,7 +29,7 @@
   <tfoot>
   <tr>
     <td *ngFor="let column of columnData">
-      <span *ngIf="isShowAdditionalInfo">{{ sumAdditionalInfo[column.title] }}</span>
+      <span *ngIf="isShowAdditionalInfo">{{ sumAdditionalInfo[column?.title] }}</span>
     </td>
     <td class="border-0">
       <button *ngIf="!isShowAdditionalInfo"
@@ -46,7 +46,7 @@
   </tr>
   <tr>
     <td *ngFor="let column of columnData">
-      <span *ngIf="isShowAdditionalInfo">{{ multiplicationAdditionalInfo[column.title] }}</span>
+      <span *ngIf="isShowAdditionalInfo">{{ multiplicationAdditionalInfo[column?.title] }}</span>
     </td>
   </tr>
   </tfoot>
