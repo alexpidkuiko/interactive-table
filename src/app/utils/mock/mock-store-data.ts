@@ -1,6 +1,6 @@
 export const mockRowData = [
-  {column1: 11, column2: 20},
-  {column1: 12, column2: 21},
+  {column10: 11, column21: 20},
+  {column10: 12, column21: 21},
 ];
 
 export const mockColumnData = [

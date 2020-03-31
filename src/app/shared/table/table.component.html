@@ -18,7 +18,7 @@
   </thead>
   <tbody class="table-body">
   <tr *ngFor="let item  of rowData; let i = index; trackBy: trackByFn">
-    <td *ngFor="let column of columnData">{{ item[column?.title] }}</td>
+    <td *ngFor="let column of columnData; let j = index">{{ item[column?.title+j] }}</td>
     <td class="border-0" *ngIf="columnData.length">
       <button type="button" class="btn btn-danger"
               (click)="emitRemoveRow(i)">Remove
@@ -26,10 +26,10 @@
     </td>
   </tr>
   </tbody>
-  <tfoot>
+  <tfoot *ngIf="rowData.length">
   <tr>
-    <td *ngFor="let column of columnData">
-      <span *ngIf="isShowAdditionalInfo">{{ sumAdditionalInfo[column?.title] }}</span>
+    <td *ngFor="let column of columnData; let i = index">
+      <span *ngIf="isShowAdditionalInfo">{{ sumAdditionalInfo[column?.title+i] }}</span>
     </td>
     <td class="border-0">
       <button *ngIf="!isShowAdditionalInfo"
@@ -45,8 +45,8 @@
     </td>
   </tr>
   <tr>
-    <td *ngFor="let column of columnData">
-      <span *ngIf="isShowAdditionalInfo">{{ multiplicationAdditionalInfo[column?.title] }}</span>
+    <td *ngFor="let column of columnData; let i = index">
+      <span *ngIf="isShowAdditionalInfo">{{ multiplicationAdditionalInfo[column?.title+i] }}</span>
     </td>
   </tr>
   </tfoot>

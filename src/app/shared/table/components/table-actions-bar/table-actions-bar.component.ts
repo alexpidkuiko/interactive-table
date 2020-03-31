@@ -69,8 +69,8 @@ export class TableActionsBarComponent implements OnInit, OnChanges {
     this.tableActionFormGroup = this.fb.group({
       columnName: ['', []]
     });
-    this.columnData.forEach(({title}) => {
-      this.tableActionFormGroup.addControl(title, new FormControl('', [Validators.required]));
+    this.columnData.forEach(({title}, index) => {
+      this.tableActionFormGroup.addControl(title + index, new FormControl('', [Validators.required]));
     });
   }
 

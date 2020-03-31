@@ -64,17 +64,17 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   private getSumForEachRowInColumn(): void {
-    this.sumAdditionalInfo = this.columnData.reduce((obj, column) => {
+    this.sumAdditionalInfo = this.columnData.reduce((obj, column, index) => {
       const { title } = column;
-      obj[title] = this.getSumByColumn(title);
+      obj[title + index] = this.getSumByColumn(title + index);
       return obj;
     }, {});
   }
 
   private getMultiplyForEachRowInColumn(): void {
-    this.multiplicationAdditionalInfo = this.columnData.reduce((obj, column) => {
+    this.multiplicationAdditionalInfo = this.columnData.reduce((obj, column, index) => {
       const { title } = column;
-      obj[title] = this.getMultiplyByColumn(title);
+      obj[title + index] = this.getMultiplyByColumn(title + index);
       return obj;
     }, {});
   }
